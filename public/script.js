@@ -12,7 +12,7 @@ var peer = new Peer(undefined, {
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({ 
     video: true,
-    audio: true
+    audio: truegit
 }).then(stream => {
     myVideoStream = stream;
     addVideoStream(myVideo, myVideoStream);
@@ -120,4 +120,8 @@ const setStopVideo = () => {
     <i class="fas fa-video"></i>
     <span>Stop Video</span>`
     document.querySelector('.main__video__button').innerHTML = html;
+}
+
+const leaveMeeting = () => {
+    window.close();
 }
