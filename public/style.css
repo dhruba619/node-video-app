@@ -104,3 +104,7 @@ video {
 .unmute {
     color:  red;
 }
+
+.stop {
+    color: red;
+}
