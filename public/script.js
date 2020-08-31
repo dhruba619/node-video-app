@@ -18,9 +18,12 @@ navigator.mediaDevices.getUserMedia({
     addVideoStream(myVideo, myVideoStream);
 
     peer.on('call', call => {
+        console.log("Called");
         call.answer(stream);
+        console.log("Answered");
         const video = document.createElement('video');
         call.on('stream', userVideoStream => {
+            console.log("Added call video");
             addVideoStream(video, userVideoStream);
         });
     })
@@ -38,15 +41,21 @@ navigator.mediaDevices.getUserMedia({
         }
     });
 
-    socket.on('createMessage',  message => {
-        $('ul').append(`<li class="message"><b>user</b><br/>${message}</li>`);
+    socket.on('createMessage',  (message, username) => {
+        $('ul').append(`<li class="message"><b>${username}</b><br/>${message}</li>`);
         scrollToBottom();
     });
 });
 
 
 peer.on('open', id => {
-    socket.emit('join-room', ROOM_ID, id);
+    let username = prompt("Please enter your name", "Harry Potter");
+    if(username!=null) {
+        socket.emit('join-room', ROOM_ID, id, username);
+    } else {
+        socket.emit('join-room', ROOM_ID, id, 'User');
+    }
+    
 });
 
 

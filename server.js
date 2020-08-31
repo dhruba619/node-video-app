@@ -21,11 +21,11 @@ app.get('/:room', (request, response) => {
 })
 
 io.on('connection', socket => {
-    socket.on('join-room', (roomId, userId) => {
+    socket.on('join-room', (roomId, userId, username) => {
         socket.join(roomId)
         socket.to(roomId).broadcast.emit('user-connected', userId);
         socket.on('message', message => {
-            io.to(roomId).emit('createMessage', message);
+            io.to(roomId).emit('createMessage', message, username);
         })
     });
 });
