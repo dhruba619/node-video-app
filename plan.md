@@ -9,9 +9,14 @@
 - Add ability to mute DONE
 - Add ability to stop video DONE
 
+## Stuffs added by me
+- Block self audio DONE
+- take user name DONE
+
 ## Future goals
-- Block self audio
-- take user name
 - add emoji's in chat
 - enable option to leave meeting
-- check mobile version
+- make UI reponsive
+
+## Bugs
+- when one user tries to refresh, other 1 gets an extra video feed but frozen
